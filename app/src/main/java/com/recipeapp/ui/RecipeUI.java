@@ -91,7 +91,8 @@ public class RecipeUI {
     // ユーザーからレシピ名と主な材料を入力させ、DataHandlerを使用してrecipes.csvに新しいレシピを追加します。
     // 材料の入力はdoneと入力するまで入力を受け付けます。
     private void addNewRecipe() {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));) {
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Adding a new recipe. ");
             System.out.print("Enter recipe name: ");
             String name = reader.readLine();
@@ -114,16 +115,16 @@ public class RecipeUI {
             dataHandler.writeData(recipe);
 
             System.out.print("Recipe added successfully.");
+            
         } catch (IOException e) {
             System.out.println("Failed to add new recipe: " + e.getMessage());
         }
-
     }
 
     // ユーザーから検索クエリを入力させ、DataHandlerから検索結果を受け取り、受け取った結果をコンソールに表示します。
     // 一致するレシピがある場合は、そのレシピの名前と主な材料をコンソールに表示します。
     // 一致するレシピがない場合は、No matching recipes found.とコンソールに出力します。
-    private void searchRecipe() {
+    // private void searchRecipe() {
 
-    }
+    // }
 }

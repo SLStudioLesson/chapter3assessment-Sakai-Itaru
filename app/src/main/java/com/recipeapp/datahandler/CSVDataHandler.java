@@ -36,10 +36,10 @@ public class CSVDataHandler implements DataHandler {
         ArrayList<Recipe> recipes = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(this.filePath))) {
             String line = "";
-            if ((line = reader.readLine()) == null) {
-                return null;
-            }
             while ((line = reader.readLine()) != null) {
+                if ((line = reader.readLine()) == null) {
+                    return null;
+                }
                 // 文字列をカンマで区切る
                 String[] lines = line.split(",");
                 // 一つ目の要素はレシピ名
@@ -79,6 +79,7 @@ public class CSVDataHandler implements DataHandler {
             writer.newLine(); // 書き込み後に改行する
         } catch (IOException e) {
             e.printStackTrace();
+            throw e;
         }
         
     }
